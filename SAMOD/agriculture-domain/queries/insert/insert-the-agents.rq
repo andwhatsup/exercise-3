@@ -1,0 +1,11 @@
+PREFIX ex: <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT DATA {
+  ex:monitoringAgent a was:MonitoringAgent ;
+      rdfs:label "Monitoring Agent" .
+      
+  ex:irrigationAgent a was:IrrigationAgent ;
+      rdfs:label "Irrigation Agent" .
+}

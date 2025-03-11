@@ -20,3 +20,5 @@ compose.yaml
 Dockerfile
 README.Docker.MD
 .dockerignore
+
+.DS_Store

@@ -1,0 +1,17 @@
+PREFIX ex: <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT DATA {
+  ex:crop1 a was:Wheat ;
+      was:hasMoistureRequirement "120"^^xsd:float .
+  
+  ex:crop2 a was:Wheat ;
+      was:hasMoistureRequirement "120"^^xsd:float .
+  
+  ex:crop3 a was:Corn ;
+      was:hasMoistureRequirement "80"^^xsd:float .
+  
+  ex:crop4 a was:Corn ;
+      was:hasMoistureRequirement "80"^^xsd:float .
+}

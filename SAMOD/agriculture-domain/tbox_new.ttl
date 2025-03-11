@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://was-course.interactions.ics.unisg.ch/farm-ontology#"
+     xml:base="https://was-course.interactions.ics.unisg.ch/farm-ontology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:was="https://was-course.interactions.ics.unisg.ch/farm-ontology#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:vann="http://purl.org/vocab/vann/">
+    <owl:Ontology rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#">
+        <vann:preferredNamespacePrefix>was</vann:preferredNamespacePrefix>
+        <rdfs:comment xml:lang="en">
+            An ontology for representing knowledge useful for the management of farms.
+        </rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#hasCoordinates -->
+
+    <owl:ObjectProperty rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasCoordinates">
+        <rdfs:domain rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#LandSection"/>
+        <rdfs:range rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Coordinates"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#hasLandSection -->
+
+    <owl:ObjectProperty rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasLandSection">
+        <rdfs:domain rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Farm"/>
+        <rdfs:range rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#LandSection"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#hasTractor -->
+
+    <owl:ObjectProperty rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasTractor">
+        <rdfs:domain rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Farm"/>
+        <rdfs:range rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Tractor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#offersAffordance -->
+
+    <owl:ObjectProperty rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#offersAffordance">
+        <rdfs:domain rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Tractor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureRequirement -->
+
+    <owl:DatatypeProperty rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureRequirement">
+        <rdfs:domain rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Crop"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Agent -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Agent">
+        <rdfs:comment>An autonomous entity that interacts with the farm environment.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Coordinates -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Coordinates">
+        <rdfs:comment xml:lang="en">
+            A set of 4 coordinates [X1,Y1,X2,Y2] that define the opposite corners of a square section at points [X1,Y1] and [X2,Y2].
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Corn -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Corn">
+        <rdfs:subClassOf rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Crop"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureRequirement"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">80.0</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A crop type with a required moisture level of 80.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Crop -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Crop">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureRequirement"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#LandSection"/>
+        <rdfs:comment>A cultivated plant growing in a land section.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Farm -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Farm">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasLandSection"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasTractor"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A plot of land devoted to the growing of crops.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#IrrigateAffordance -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#IrrigateAffordance">
+        <rdfs:comment xml:lang="en">
+            An affordance offered by the environment to agents for irrigating the soil.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#IrrigationEvent -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#IrrigationEvent">
+        <rdfs:comment>
+            An event triggered when the moisture level of a land section falls below the required level for its crop type.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#LandSection -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#LandSection">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasCoordinates"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A defined area within a farm where crops are cultivated.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#ReadSoilMoistureAffordance -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#ReadSoilMoistureAffordance">
+        <rdfs:comment xml:lang="en">
+            An affordance offered by the environment to agents for reading the moisture level of soil.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Sensor -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Sensor">
+        <rdfs:comment>A device embedded in a tractor that collects real-time environmental data.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#SoilMoisture -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#SoilMoisture">
+        <rdfs:comment xml:lang="en">
+            The level of moisture in soil.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Tractor -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Tractor">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#offersAffordance"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">
+            An automotive vehicle that offers affordances to agents for managing a farm.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#WaterUsage -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#WaterUsage">
+        <rdfs:comment>
+            The amount of water applied to a land section during irrigation.
+        </rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- https://was-course.interactions.ics.unisg.ch/farm-ontology#Wheat -->
+
+    <owl:Class rdf:about="https://was-course.interactions.ics.unisg.ch/farm-ontology#Wheat">
+        <rdfs:subClassOf rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#Crop"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://was-course.interactions.ics.unisg.ch/farm-ontology#hasMoistureRequirement"/>
+                <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">120.0</owl:hasValue>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>A crop type with a required moisture level of 120.</rdfs:comment>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,45 @@
+PREFIX ex: <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+INSERT DATA {
+  ex:section1 a was:LandSection ;
+      was:hasCoordinates ex:coord-section1 ;
+      was:hasCrop ex:crop1 .
+      
+  ex:coord-section1 a was:Coordinates ;
+      was:hasX1 "0"^^xsd:float ;
+      was:hasY1 "0"^^xsd:float ;
+      was:hasX2 "1"^^xsd:float ;
+      was:hasY2 "1"^^xsd:float .
+
+  ex:section2 a was:LandSection ;
+      was:hasCoordinates ex:coord-section2 ;
+      was:hasCrop ex:crop2 .
+      
+  ex:coord-section2 a was:Coordinates ;
+      was:hasX1 "1"^^xsd:float ;
+      was:hasY1 "0"^^xsd:float ;
+      was:hasX2 "2"^^xsd:float ;
+      was:hasY2 "1"^^xsd:float .
+
+  ex:section3 a was:LandSection ;
+      was:hasCoordinates ex:coord-section3 ;
+      was:hasCrop ex:crop3 .
+      
+  ex:coord-section3 a was:Coordinates ;
+      was:hasX1 "0"^^xsd:float ;
+      was:hasY1 "1"^^xsd:float ;
+      was:hasX2 "1"^^xsd:float ;
+      was:hasY2 "2"^^xsd:float .
+
+  ex:section4 a was:LandSection ;
+      was:hasCoordinates ex:coord-section4 ;
+      was:hasCrop ex:crop4 .
+      
+  ex:coord-section4 a was:Coordinates ;
+      was:hasX1 "1"^^xsd:float ;
+      was:hasY1 "1"^^xsd:float ;
+      was:hasX2 "2"^^xsd:float ;
+      was:hasY2 "2"^^xsd:float .
+}
