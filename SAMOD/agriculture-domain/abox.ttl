@@ -1,21 +1,24 @@
 @prefix ex: <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#> .
 @prefix was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#> .
-@prefix hmas: <https://purl.org/hmas/> .
 @prefix td: <https://www.w3.org/2019/wot/td#> .
 @prefix wotsec: <https://www.w3.org/2019/wot/security#> .
 @prefix htv: <http://www.w3.org/2011/http#> .
 @prefix hctl: <https://www.w3.org/2019/wot/hypermedia#> .
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+### Farm and Tractors ###
 
 ex:farm-17c04810-567a-4236-b310-611bb4fd2a8c a was:Farm;
-  hmas:contains ex:tractor-34541705-7798-4a16-b76b-5fec2861e077,
-    ex:tractor-ae039570-396e-424f-9008-2142c3201b73 .
+  was:hasTractor ex:tractor-34541705-7798-4a16-b76b-5fec2861e077,
+                ex:tractor-ae039570-396e-424f-9008-2142c3201b73;
+  was:hasLandSection ex:section1, ex:section2, ex:section3, ex:section4 .
 
 ex:tractor-34541705-7798-4a16-b76b-5fec2861e077 a td:Thing, was:Tractor;
   hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor1.ttl> ;
   td:title "A tractor that can be used for monitoring the moisture level of soil in a farm.";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ];
   td:hasBase <http://localhost:1080/api/tractors/1/>;
   td:hasActionAffordance [ a td:ActionAffordance, was:ReadSoilMoistureAffordance;
     td:name "Read Moisture Level";
@@ -34,7 +37,8 @@ ex:tractor-34541705-7798-4a16-b76b-5fec2861e077 a td:Thing, was:Tractor;
       ]
     ];
     td:hasOutputSchema [ a js:IntegerSchema, was:SoilMoisture ]
-  ] .
+  ];
+  was:operatedBy ex:monitoringAgent .
 
 ex:tractor-ae039570-396e-424f-9008-2142c3201b73 a td:Thing, was:Tractor;
   hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor2.ttl> ;
@@ -57,4 +61,69 @@ ex:tractor-ae039570-396e-424f-9008-2142c3201b73 a td:Thing, was:Tractor;
         js:maximum "2"^^xsd:int
       ]
     ]
-  ] .
+  ];
+  was:operatedBy ex:irrigationAgent .
+
+### Agents ###
+
+ex:monitoringAgent a was:MonitoringAgent;
+  rdfs:label "Monitoring Agent" .
+
+ex:irrigationAgent a was:IrrigationAgent;
+  rdfs:label "Irrigation Agent" .
+
+### Land Sections and Coordinates ###
+
+ex:section1 a was:LandSection;
+  was:hasCoordinates ex:coord-section1;
+  was:hasCrop ex:crop1 .
+
+ex:coord-section1 a was:Coordinates;
+  was:hasX1 "0"^^xsd:float;
+  was:hasY1 "0"^^xsd:float;
+  was:hasX2 "1"^^xsd:float;
+  was:hasY2 "1"^^xsd:float .
+
+ex:section2 a was:LandSection;
+  was:hasCoordinates ex:coord-section2;
+  was:hasCrop ex:crop2 .
+
+ex:coord-section2 a was:Coordinates;
+  was:hasX1 "1"^^xsd:float;
+  was:hasY1 "0"^^xsd:float;
+  was:hasX2 "2"^^xsd:float;
+  was:hasY2 "1"^^xsd:float .
+
+ex:section3 a was:LandSection;
+  was:hasCoordinates ex:coord-section3;
+  was:hasCrop ex:crop3 .
+
+ex:coord-section3 a was:Coordinates;
+  was:hasX1 "0"^^xsd:float;
+  was:hasY1 "1"^^xsd:float;
+  was:hasX2 "1"^^xsd:float;
+  was:hasY2 "2"^^xsd:float .
+
+ex:section4 a was:LandSection;
+  was:hasCoordinates ex:coord-section4;
+  was:hasCrop ex:crop4 .
+
+ex:coord-section4 a was:Coordinates;
+  was:hasX1 "1"^^xsd:float;
+  was:hasY1 "1"^^xsd:float;
+  was:hasX2 "2"^^xsd:float;
+  was:hasY2 "2"^^xsd:float .
+
+### Crops ###
+
+ex:crop1 a was:Wheat;
+  was:hasMoistureRequirement "120"^^xsd:float .
+
+ex:crop2 a was:Wheat;
+  was:hasMoistureRequirement "120"^^xsd:float .
+
+ex:crop3 a was:Corn;
+  was:hasMoistureRequirement "80"^^xsd:float .
+
+ex:crop4 a was:Corn;
+  was:hasMoistureRequirement "80"^^xsd:float .

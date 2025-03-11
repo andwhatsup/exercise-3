@@ -32,3 +32,130 @@ was:Coordinates rdf:type owl:Class ;
 
 was:SoilMoisture rdf:type owl:Class ;
                  rdfs:comment "The level of moisture in soil."@en .
+
+was:Crop rdf:type owl:Class ;
+    rdfs:comment "A cultivated plant growing in a land section."@en .
+
+was:LandSection rdf:type owl:Class ;
+    rdfs:comment "A defined area within a farm where crops are cultivated."@en .
+
+was:Agent rdf:type owl:Class ;
+    rdfs:comment "An autonomous entity that interacts with the farm environment."@en .
+
+was:MonitoringAgent rdf:type owl:Class ;
+    rdfs:subClassOf :Agent ;
+    rdfs:comment "An agent responsible for reading the soil moisture level."@en .
+
+was:IrrigationAgent rdf:type owl:Class ;
+    rdfs:subClassOf :Agent ;
+    rdfs:comment "An agent responsible for irrigating land sections when moisture levels are too low."@en .
+
+was:IrrigationEvent rdf:type owl:Class ;
+    rdfs:comment "An event triggered when the moisture level falls below the required level."@en .
+
+was:MoistureReading rdf:type owl:Class ;
+    rdfs:comment "A recorded value of soil moisture at a specific land section."@en .
+
+was:Wheat rdf:type owl:Class ;
+    rdfs:subClassOf :Crop ;
+    rdfs:comment "A crop type with a required moisture level of 120."@en .
+
+was:Corn rdf:type owl:Class ;
+    rdfs:subClassOf :Crop ;
+    rdfs:comment "A crop type with a required moisture level of 80."@en .
+
+was:Sensor rdf:type owl:Class ;
+    rdfs:comment "A device embedded in a tractor that collects real-time environmental data."@en .
+
+was:Actuator rdf:type owl:Class ;
+    rdfs:comment "A mechanism that performs irrigation when instructed."@en .
+
+was:Field ardf:type owl:Class ;
+    rdfs:comment "A collection of land sections forming part of a farm."@en .
+
+was:WaterUsage rdf:type owl:Class ;
+    rdfs:comment "The amount of water applied to a land section during irrigation."@en .
+
+#############################
+# Property Definitions
+#############################
+
+# Relating farms to their tractors
+was:hasTractor rdf:type owl:ObjectProperty ;
+    rdfs:domain :Farm ;
+    rdfs:range :Tractor ;
+    rdfs:comment "Relates a farm to its tractors." .
+
+# Relating farms to their land sections
+was:hasLandSection rdf:type owl:ObjectProperty ;
+    rdfs:domain :Farm ;
+    rdfs:range :LandSection ;
+    rdfs:comment "Relates a farm to its land sections." .
+
+# Relating a land section to its coordinates
+was:hasCoordinates rdf:type owl:ObjectProperty ;
+    rdfs:domain :LandSection ;
+    rdfs:range :Coordinates ;
+    rdfs:comment "Relates a land section to the coordinates defining its area." .
+
+# Data properties for coordinates
+was:hasX1 rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Coordinates ;
+    rdfs:range xsd:float ;
+    rdfs:comment "X coordinate of the first corner." .
+
+was:hasY1 rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Coordinates ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Y coordinate of the first corner." .
+
+was:hasX2 rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Coordinates ;
+    rdfs:range xsd:float ;
+    rdfs:comment "X coordinate of the opposite corner." .
+
+was:hasY2 rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Coordinates ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Y coordinate of the opposite corner." .
+
+# Relating a land section to its current soil moisture
+was:hasSoilMoisture rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LandSection ;
+    rdfs:range xsd:float ;
+    rdfs:comment "The current soil moisture level of the land section." .
+
+# Associating a land section with the crop growing there
+was:hasCrop rdf:type owl:ObjectProperty ;
+    rdfs:domain :LandSection ;
+    rdfs:range :Crop ;
+    rdfs:comment "Relates a land section to the crop cultivated in it." .
+
+# Moisture requirement as a data property for a crop
+was:hasMoistureRequirement a owl:DatatypeProperty ;
+    rdfs:domain :Crop ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Specifies the required moisture level for a crop." .
+
+# For tractors: linking to the affordances they provide
+was:offersAffordance rdf:type owl:ObjectProperty ;
+    rdfs:domain :Tractor ;
+    rdfs:range :Affordance ;
+    rdfs:comment "Relates a tractor to an affordance it offers (e.g., reading or irrigating)." .
+
+# For sensors and actuators on tractors
+was:hasSensor rdf:type owl:ObjectProperty ;
+    rdfs:domain :Tractor ;
+    rdfs:range :Sensor ;
+    rdfs:comment "Relates a tractor to its sensor(s) for environmental data collection." .
+
+was:hasActuator rdf:type owl:ObjectProperty ;
+    rdfs:domain :Tractor ;
+    rdfs:range :Actuator ;
+    rdfs:comment "Relates a tractor to its actuator(s) for irrigation control." .
+
+# Relating land sections to water usage during irrigation
+was:hasWaterUsage rdf:type owl:DatatypeProperty ;
+    rdfs:domain :LandSection ;
+    rdfs:range xsd:float ;
+    rdfs:comment "Records the amount of water applied to a land section." .
