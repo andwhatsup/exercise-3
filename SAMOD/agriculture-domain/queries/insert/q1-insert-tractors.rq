@@ -13,50 +13,50 @@ INSERT {
         ?farm hmas:contains ?newTractor1.
         ?farm hmas:contains ?newTractor2.
         ?newTractor1 a td:Thing, was:Tractor;
-  			td:title "A tractor that can be used for monitoring the moisture level of soil in a farm.";
-  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
-  			td:hasBase <http://localhost:1080/api/tractors/1/>;
-  			td:hasActionAffordance [ a td:ActionAffordance, was:ReadSoilMoistureAffordance;
-      		td:name "Read Moisture Level";
-      		td:hasForm [
-          		htv:methodName "GET";
-          		hctl:hasTarget <http://localhost:1080/api/tractors/1/moisture>;
-          		hctl:forContentType "application/json";
-          		hctl:hasOperationType td:invokeAction
-        	];
-      		td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
-          		js:minItems "4"^^xsd:int;
-          		js:maxItems "4"^^xsd:int;
-          		js:items [ a js:IntegerSchema;
-              		js:minimum "0"^^xsd:int;
-              		js:maximum "2"^^xsd:int
-            	]
-        	];
-      		td:hasOutputSchema [ a js:IntegerSchema, was:SoilMoisture ]
-    	] .
+            td:title "A tractor that can be used for monitoring the moisture level of soil in a farm.";
+            td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme];
+            td:hasBase <http://localhost:1080/api/tractors/1/>;
+            td:hasActionAffordance [ a td:ActionAffordance, was:ReadSoilMoistureAffordance;
+                td:name "Read Moisture Level";
+                td:hasForm [
+                    htv:methodName "GET";
+                    hctl:hasTarget <http://localhost:1080/api/tractors/1/moisture>;
+                    hctl:forContentType "application/json";
+                    hctl:hasOperationType td:invokeAction
+                ];
+                td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
+                    js:minItems "4"^^xsd:int;
+                    js:maxItems "4"^^xsd:int;
+                    js:items [ a js:IntegerSchema;
+                        js:minimum "0"^^xsd:int;
+                        js:maximum "2"^^xsd:int
+                    ]
+                ];
+                td:hasOutputSchema [ a js:IntegerSchema, was:SoilMoisture ]
+            ] .
         
         ?newTractor2 a td:Thing, was:Tractor;
-  			td:title "A tractor that can be used for irrigating sections in a farm.";
-  			td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ];
-  			td:hasBase <http://localhost:1080/api/tractors/2/>;
-  			td:hasActionAffordance [ a td:ActionAffordance, was:IrrigateAffordance;
-      		td:name "Irrigate";
-      		td:hasForm [
-          		htv:methodName "PUT";
-          		hctl:hasTarget <http://localhost:1080/api/tractors/2/sprayer>;
-          		hctl:forContentType "application/json";
-          		hctl:hasOperationType td:invokeAction
-        	];
-      		td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
-          		js:minItems "4"^^xsd:int;
-          		js:maxItems "4"^^xsd:int;
-          		js:items [ a js:IntegerSchema;
-              		js:minimum "0"^^xsd:int;
-              		js:maximum "2"^^xsd:int
-            	]
-        	]
-    	] .
-    }.
+            td:title "A tractor that can be used for irrigating sections in a farm.";
+            td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ];
+            td:hasBase <http://localhost:1080/api/tractors/2/>;
+            td:hasActionAffordance [ a td:ActionAffordance, was:IrrigateAffordance;
+                td:name "Irrigate";
+                td:hasForm [
+                    htv:methodName "PUT";
+                    hctl:hasTarget <http://localhost:1080/api/tractors/2/sprayer>;
+                    hctl:forContentType "application/json";
+                    hctl:hasOperationType td:invokeAction
+                ];
+                td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
+                    js:minItems "4"^^xsd:int;
+                    js:maxItems "4"^^xsd:int;
+                    js:items [ a js:IntegerSchema;
+                        js:minimum "0"^^xsd:int;
+                        js:maximum "2"^^xsd:int
+                    ]
+                ]
+            ] .
+    }
 } WHERE {
 	?farm a was:Farm.
 	BIND(IRI(CONCAT("http://localhost:7200/andreas-baumann#tractor-", strUUID())) AS ?newTractor1)
