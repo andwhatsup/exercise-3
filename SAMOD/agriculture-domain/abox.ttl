@@ -7,61 +7,62 @@
 @prefix js: <https://www.w3.org/2019/wot/json-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix hmas: <https://purl.org/hmas/> .
 
 ### Farm and Tractors ###
 
 ex:farm-17c04810-567a-4236-b310-611bb4fd2a8c a was:Farm;
-  was:hasTractor ex:tractor-34541705-7798-4a16-b76b-5fec2861e077,
+  hmas:contains ex:tractor-34541705-7798-4a16-b76b-5fec2861e077,
                 ex:tractor-ae039570-396e-424f-9008-2142c3201b73;
   was:hasLandSection ex:section1, ex:section2, ex:section3, ex:section4 .
 
 ex:tractor-34541705-7798-4a16-b76b-5fec2861e077 a td:Thing, was:Tractor;
   hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor1.ttl> ;
-  td:title "A tractor that can be used for monitoring the moisture level of soil in a farm.";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ];
-  td:hasBase <http://localhost:1080/api/tractors/1/>;
+  td:title "A tractor that can be used for monitoring the moisture level of soil in a farm." ;
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ] ;
+  td:hasBase <http://localhost:1080/api/tractors/1/> ;
   td:hasActionAffordance [ a td:ActionAffordance, was:ReadSoilMoistureAffordance;
-    td:name "Read Moisture Level";
+    td:name "Read Moisture Level" ;
     td:hasForm [
-      htv:methodName "GET";
-      hctl:hasTarget <http://localhost:1080/api/tractors/1/moisture>;
-      hctl:forContentType "application/json";
+      htv:methodName "GET" ;
+      hctl:hasTarget <http://localhost:1080/api/tractors/1/moisture> ;
+      hctl:forContentType "application/json" ;
       hctl:hasOperationType td:invokeAction
-    ];
+    ] ;
     td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
-      js:minItems "4"^^xsd:int;
-      js:maxItems "4"^^xsd:int;
+      js:minItems "4"^^xsd:int ;
+      js:maxItems "4"^^xsd:int ;
       js:items [ a js:IntegerSchema;
-        js:minimum "0"^^xsd:int;
+        js:minimum "0"^^xsd:int ;
         js:maximum "2"^^xsd:int
       ]
-    ];
+    ] ;
     td:hasOutputSchema [ a js:IntegerSchema, was:SoilMoisture ]
-  ];
+  ] ;
   was:operatedBy ex:monitoringAgent .
 
 ex:tractor-ae039570-396e-424f-9008-2142c3201b73 a td:Thing, was:Tractor;
   hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor2.ttl> ;
-  td:title "A tractor that can be used for irrigating sections in a farm.";
-  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ];
-  td:hasBase <http://localhost:1080/api/tractors/2/>;
+  td:title "A tractor that can be used for irrigating sections in a farm." ;
+  td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme ] ;
+  td:hasBase <http://localhost:1080/api/tractors/2/> ;
   td:hasActionAffordance [ a td:ActionAffordance, was:IrrigateAffordance;
-    td:name "Irrigate";
+    td:name "Irrigate" ;
     td:hasForm [
-      htv:methodName "PUT";
-      hctl:hasTarget <http://localhost:1080/api/tractors/2/sprayer>;
-      hctl:forContentType "application/json";
+      htv:methodName "PUT" ;
+      hctl:hasTarget <http://localhost:1080/api/tractors/2/sprayer> ;
+      hctl:forContentType "application/json" ;
       hctl:hasOperationType td:invokeAction
-    ];
+    ] ;
     td:hasInputSchema [ a js:ArraySchema, was:Coordinates;
-      js:minItems "4"^^xsd:int;
-      js:maxItems "4"^^xsd:int;
+      js:minItems "4"^^xsd:int ;
+      js:maxItems "4"^^xsd:int ;
       js:items [ a js:IntegerSchema;
-        js:minimum "0"^^xsd:int;
+        js:minimum "0"^^xsd:int ;
         js:maximum "2"^^xsd:int
       ]
     ]
-  ];
+  ] ;
   was:operatedBy ex:irrigationAgent .
 
 ### Agents ###
