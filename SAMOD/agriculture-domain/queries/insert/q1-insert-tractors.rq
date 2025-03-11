@@ -8,7 +8,7 @@ PREFIX js: <https://www.w3.org/2019/wot/json-schema#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 INSERT {
-    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+    GRAPH <http://localhost:7200/andreas-baumann#>
     {
         ?farm hmas:contains ?newTractor1.
         ?farm hmas:contains ?newTractor2.
@@ -59,6 +59,6 @@ INSERT {
     }.
 } WHERE {
 	?farm a was:Farm.
-  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-danai#tractor-", strUUID())) AS ?newTractor1)
-  	BIND(IRI(CONCAT("https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-danai#tractor-", strUUID())) AS ?newTractor2)
+	BIND(IRI(CONCAT("http://localhost:7200/andreas-baumann#tractor-", strUUID())) AS ?newTractor1)
+	BIND(IRI(CONCAT("http://localhost:7200/andreas-baumann#tractor-", strUUID())) AS ?newTractor2)
 }

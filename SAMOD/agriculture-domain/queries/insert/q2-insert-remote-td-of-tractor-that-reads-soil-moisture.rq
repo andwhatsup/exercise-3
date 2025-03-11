@@ -3,7 +3,7 @@ PREFIX hmas: <https://purl.org/hmas/>
 PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 INSERT {
-    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+    GRAPH <http://localhost:7200/andreas-baumann#>
     {
       ?tractor1 hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor1.ttl>.
     }.

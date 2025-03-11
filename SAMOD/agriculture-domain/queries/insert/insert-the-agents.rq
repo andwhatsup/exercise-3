@@ -1,4 +1,4 @@
-PREFIX ex: <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+PREFIX ex: <http://localhost:7200/andreas-baumann#>
 PREFIX was: <https://was-course.interactions.ics.unisg.ch/farm-ontology#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 

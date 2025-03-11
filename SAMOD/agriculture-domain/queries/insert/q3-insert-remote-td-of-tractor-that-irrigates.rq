@@ -3,14 +3,14 @@ PREFIX hmas: <https://purl.org/hmas/>
 PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 INSERT {
-    GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#>
+    GRAPH <http://localhost:7200/andreas-baumann#>
     {
-      ?tractor1 hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor2.ttl>.
-    }.
+      ?tractor2 hmas:hasProfile <https://raw.githubusercontent.com/Interactions-HSG/example-tds/was/tds/tractor2.ttl>.
+    }
 } WHERE {
     ?farm a was:Farm.
-    ?farm hmas:contains ?tractor1.
-    ?tractor1 a was:Tractor.
-    ?tractor1 td:hasActionAffordance ?aff1.
-    ?aff1 a was:IrrigateAffordance.
+    ?farm hmas:contains ?tractor2.
+    ?tractor2 a was:Tractor.
+    ?tractor2 td:hasActionAffordance ?aff2.
+    ?aff2 a was:IrrigateAffordance.
 }

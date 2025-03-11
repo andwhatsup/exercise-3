@@ -3,8 +3,8 @@ PREFIX hmas: <https://purl.org/hmas/>
 PREFIX td: <https://www.w3.org/2019/wot/td#>
 
 SELECT ?td WHERE {
-GRAPH <https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-alessandro#> {
-   bind (<https://sandbox-graphdb.interactions.ics.unisg.ch/was-exercise-3-danai#farm-17c04810-567a-4236-b310-611bb4fd2a8c> as ?farm)
+GRAPH <http://localhost:7200/andreas-baumann#> {
+   bind (<http://localhost:7200/andreas-baumann#17c04810-567a-4236-b310-611bb4fd2a8c> as ?farm)
    ?farm a was:Farm.
    ?farm hmas:contains ?tractor.
    ?tractor a was:Tractor. 

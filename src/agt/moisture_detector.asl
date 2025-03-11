@@ -1,7 +1,7 @@
 // moisture_detector agent
 
 // Add your graph repo location below
-repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/was-exercise-3-danai").
+repo_location("http://localhost:7200/repositories/andreas-baumann").
 
 !start.
 
@@ -24,7 +24,7 @@ repo_location("https://sandbox-graphdb.interactions.ics.unisg.ch/repositories/wa
 +!manage_farm : farm(Farm) <-
     .print("Managing farm: ", Farm);
     queryFarmSections(Farm, Sections);
-    .print("Queried sectios of farm: ", Sections);
+    .print("Queried sections of farm: ", Sections);
     !monitor_section(Sections).
 
 +!manage_farm : true <-
